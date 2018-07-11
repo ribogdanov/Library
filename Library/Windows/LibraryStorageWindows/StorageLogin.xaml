@@ -1,0 +1,27 @@
+﻿<Window x:Class="Library.Windows.LibraryStorageWindows.StorageLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
+        mc:Ignorable="d"
+        Title="Вход: Хранилище" MinHeight="150" Height="150" MinWidth="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Войти в модуль "Хранилище"</TextBlock>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Пароль:</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="15" Name="PasswordTextBox"/>
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Пароль: 12345</TextBlock>
+        <Button Grid.Row="3" Click="Button_Click" Tag="0">Вход</Button>
+        <Button Grid.Row="3" Grid.Column="1" Click="Button_Click" Tag="1">Назад</Button>
+    </Grid>
+</Window>

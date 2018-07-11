@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Главное окно" MinHeight="350" Height="350" MinWidth="300" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"><Run FontWeight="Bold" Text="Библиотека"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="1">Войти в модуль:</TextBlock>
+        <Button Name="CustomerButton" Grid.Row="2" FontSize="15" Click="Button_Click" Tag="0">Читатель</Button>
+        <Button Name="DeliveryDeskButton" Grid.Row="3" FontSize="15" Click="Button_Click" Tag="1">Абонемент</Button>
+        <Button Name="StorageButton" Grid.Row="4" FontSize="15" Click="Button_Click" Tag="2">Хранилище</Button>
+        <Button Name="ExitButton" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="3">Выйти</Button>
+
     </Grid>
 </Window>

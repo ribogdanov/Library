@@ -34,8 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +63,129 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Author.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Author_Book.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookItem.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDocumentInteraction.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentItem.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Periodical.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodicalIssue.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RenewalDate.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TheModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CustomerWindows\CustomerLogin.xaml.cs">
+      <DependentUpon>CustomerLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CustomerWindows\CustomerOverview.xaml.cs">
+      <DependentUpon>CustomerOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\CheckOutBookWindow.xaml.cs">
+      <DependentUpon>CheckOutBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\CheckOutPeriodicalWindow.xaml.cs">
+      <DependentUpon>CheckOutPeriodicalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\CustomerRegistrationWindow.xaml.cs">
+      <DependentUpon>CustomerRegistrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\DeliveryDeskLogin.xaml.cs">
+      <DependentUpon>DeliveryDeskLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\MainDeliveryDeskWindow.xaml.cs">
+      <DependentUpon>MainDeliveryDeskWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\ReturnRenewWindow.xaml.cs">
+      <DependentUpon>ReturnRenewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddAuthorWindow.xaml.cs">
+      <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddBookItemWindow.xaml.cs">
+      <DependentUpon>AddBookItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddBookMainWindow.xaml.cs">
+      <DependentUpon>AddBookMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddBookWindow.xaml.cs">
+      <DependentUpon>AddBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalIssueWindow.xaml.cs">
+      <DependentUpon>AddPeriodicalIssueWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalItemWindow.xaml.cs">
+      <DependentUpon>AddPeriodicalItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalMainWindow.xaml.cs">
+      <DependentUpon>AddPeriodicalMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalWindow.xaml.cs">
+      <DependentUpon>AddPeriodicalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindow.xaml.cs">
+      <DependentUpon>DocumentWriteOffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\MainStorageWindow.xaml.cs">
+      <DependentUpon>MainStorageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\OverdueDocumentsOverviewWindow.xaml.cs">
+      <DependentUpon>OverdueDocumentsOverviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\StorageLogin.xaml.cs">
+      <DependentUpon>StorageLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SearchWindows\BookSearchWindow.xaml.cs">
+      <DependentUpon>BookSearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SearchWindows\MainSearchWindow.xaml.cs">
+      <DependentUpon>MainSearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SearchWindows\PeriodicalSearchWindow.xaml.cs">
+      <DependentUpon>PeriodicalSearchWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +198,98 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\CustomerWindows\CustomerLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CustomerWindows\CustomerOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\CheckOutBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\CheckOutPeriodicalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\CustomerRegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\DeliveryDeskLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\MainDeliveryDeskWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DeliveryDeskWindows\ReturnRenewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddAuthorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddBookItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddBookMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalIssueWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\DocumentWriteOffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\MainStorageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\OverdueDocumentsOverviewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\StorageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SearchWindows\BookSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SearchWindows\MainSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SearchWindows\PeriodicalSearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -85,13 +309,37 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="TheModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TheModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TheModel.edmx.diagram">
+      <DependentUpon>TheModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TheModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TheModel.Context.cs</LastGenOutput>
+      <DependentUpon>TheModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="TheModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TheModel.edmx</DependentUpon>
+      <LastGenOutput>TheModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

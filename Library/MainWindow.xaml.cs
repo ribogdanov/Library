@@ -20,9 +20,37 @@ namespace Library
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Windows.CustomerWindows.CustomerLogin customerLoginWindow { get; set; }
+        public Windows.DeliveryDeskWindows.DeliveryDeskLogin deliveryDeskLoginWindow { get; set; }
+        public Windows.LibraryStorageWindows.StorageLogin storageLoginWindow { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var tag = button.Tag as string;
+            var tagInt = Convert.ToInt32(tag);
+            switch (tagInt)
+            {
+                case 0:
+                    customerLoginWindow = new Windows.CustomerWindows.CustomerLogin();
+                    customerLoginWindow.Show();
+                    break;
+                case 1:
+                    deliveryDeskLoginWindow = new Windows.DeliveryDeskWindows.DeliveryDeskLogin();
+                    deliveryDeskLoginWindow.Show();
+                    break;
+                case 2:
+                    storageLoginWindow = new Windows.LibraryStorageWindows.StorageLogin();
+                    storageLoginWindow.Show();
+                    break;
+                case 3:
+                    Close();
+                    break;
+            }
         }
     }
 }

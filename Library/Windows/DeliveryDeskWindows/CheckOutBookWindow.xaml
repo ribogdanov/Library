@@ -1,0 +1,64 @@
+﻿<Window x:Class="Library.Windows.DeliveryDeskWindows.CheckOutBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.Windows.DeliveryDeskWindows"
+        mc:Ignorable="d"
+        Title="Выдать книгу" Height="600" MinHeight="600" Width="800" MinWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Выдать книгу</TextBlock>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Введите ID читателя:</TextBlock>
+            <TextBox Grid.Column="1"/>
+        </Grid>
+        <DataGrid Grid.Row="2"/>
+        <DataGrid Grid.Row="3"/>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Назад</Button>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="300" FontSize="15">Выдать выбранный экземляр читателю</Button>
+        <Grid Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Поиск по автору</TextBlock>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Имя:</TextBlock>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Фамилия:</TextBlock>
+            <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Отчество:</TextBlock>
+            <TextBlock Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Поиск по названию</TextBlock>
+            <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Название:</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1"/>
+            <TextBox Grid.Row="2" Grid.Column="1"/>
+            <TextBox Grid.Row="3" Grid.Column="1"/>
+            <TextBox Grid.Row="6" Grid.Column="1"/>
+            <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Искать</Button>
+            <Button Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Искать</Button>
+        </Grid>
+    </Grid>
+</Window>
