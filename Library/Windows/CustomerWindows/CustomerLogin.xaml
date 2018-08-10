@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.CustomerWindows"
         mc:Ignorable="d"
-        Title="Вход: Читатель" MinHeight="150" Height="150" MinWidth="300" Width="300">
+        Title="Вход: Читатель" MinHeight="180" Height="180" MinWidth="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,9 +21,10 @@
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Войти в модуль "Читатель"</TextBlock>
         <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">ID:</TextBlock>
         <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Пароль:</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" FontSize="15"/>
-        <TextBox Grid.Row="2" Grid.Column="1" FontSize="15"/>
-        <Button Grid.Row="3" Click="Button_Click" Tag="0">Вход</Button>
-        <Button Grid.Row="3" Grid.Column="1" Click="Button_Click" Tag="1">Назад</Button>
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="15" Name="IDTextBox">5</TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" FontSize="15" Name="PasswordTextBox">12345</TextBox>
+        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">ID = 5; Пароль = 12345</TextBlock>
+        <Button Grid.Row="4" Click="Button_Click" Tag="0">Вход</Button>
+        <Button Grid.Row="4" Grid.Column="1" Click="Button_Click" Tag="1">Назад</Button>
     </Grid>
 </Window>

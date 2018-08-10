@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.CustomerWindows"
         mc:Ignorable="d"
-        Title="Личный кабинет читателя" Height="650" MinHeight="650" Width="800" MinWidth="800">
+        Title="Личный кабинет читателя" Height="650" MinHeight="650" Width="1080" MinWidth="1080" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,15 +20,15 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Здравствуйте, N</TextBox>
-        <TextBox Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Ваш ID:</TextBox>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Name="GreetingTextBox">Здравствуйте, N</TextBox>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Name="IdTextBox">Ваш ID:</TextBox>
         <TextBox Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Ваши книги:</TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Ваши периодические издания:</TextBox>
-        <DataGrid Grid.Row="3"/>
-        <DataGrid Grid.Row="3" Grid.Column="1"/>
-        <Button Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Продлить книгу</Button>
-        <Button Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="250" FontSize="15">Продлить периодическое издание</Button>
-        <Button Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="250" FontSize="15">Искать документ в базе данных</Button>
-        <Button Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Назад</Button>
+        <DataGrid Grid.Row="3" Name="BooksDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
+        <DataGrid Grid.Row="3" Grid.Column="1" Name="PeriodicalsDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
+        <Button Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="0">Продлить книгу</Button>
+        <Button Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="250" FontSize="15" Click="Button_Click" Tag="1">Продлить периодическое издание</Button>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="250" FontSize="15" Click="Button_Click" Tag="2">Искать документ в базе данных</Button>
+        <Button Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="3">Назад</Button>
     </Grid>
 </Window>

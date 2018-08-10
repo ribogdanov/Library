@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Library.Windows.CustomerWindows
     public partial class CustomerLogin : Window
     {
         public CustomerOverview customerOverviewWindow { get; set; }
+
         public CustomerLogin()
         {
             InitializeComponent();
@@ -33,8 +35,20 @@ namespace Library.Windows.CustomerWindows
             switch (tagInt)
             {
                 case 0:
-                    customerOverviewWindow = new CustomerOverview();
-                    customerOverviewWindow.Show();
+                    using (TheContext db = new TheContext())
+                    {
+                        db.Customers.Load();
+                        var users = db.Customers;
+                        foreach (var user in users)
+                        {
+                            if (user.CustomerID.ToString() == IDTextBox.Text && user.Password == PasswordTextBox.Text)
+                            {
+                                customerOverviewWindow = new CustomerOverview(user);
+                                customerOverviewWindow.Show();
+                                break;
+                            }
+                        }
+                    }
                     break;
                 case 1:
                     Close();

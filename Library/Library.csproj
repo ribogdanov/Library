@@ -123,6 +123,8 @@
     <Compile Include="Windows\CustomerWindows\CustomerOverview.xaml.cs">
       <DependentUpon>CustomerOverview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CustomerWindows\QueryResultClasses\CustomerOverviewWindow_BooksDataGrid.cs" />
+    <Compile Include="Windows\CustomerWindows\QueryResultClasses\CustomerOverviewWindow_PeriodicalsDataGrid.cs" />
     <Compile Include="Windows\DeliveryDeskWindows\CheckOutBookWindow.xaml.cs">
       <DependentUpon>CheckOutBookWindow.xaml</DependentUpon>
     </Compile>
