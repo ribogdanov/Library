@@ -140,6 +140,7 @@
     <Compile Include="Windows\DeliveryDeskWindows\MainDeliveryDeskWindow.xaml.cs">
       <DependentUpon>MainDeliveryDeskWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DeliveryDeskWindows\QueryResultClasses\CustomerRegistration_GetUserID.cs" />
     <Compile Include="Windows\DeliveryDeskWindows\ReturnRenewWindow.xaml.cs">
       <DependentUpon>ReturnRenewWindow.xaml</DependentUpon>
     </Compile>

@@ -36,18 +36,22 @@ namespace Library
             switch (tagInt)
             {
                 case 0:
+                    //Нажата кнопка "Войти в модуль "Читатель"
                     customerLoginWindow = new Windows.CustomerWindows.CustomerLogin();
                     customerLoginWindow.Show();
                     break;
                 case 1:
+                    //Нажата кнопка "Войти в модуль "Абонемент"
                     deliveryDeskLoginWindow = new Windows.DeliveryDeskWindows.DeliveryDeskLogin();
                     deliveryDeskLoginWindow.Show();
                     break;
                 case 2:
+                    //Нажата кнопка "Войти в модуль "Хранилище"
                     storageLoginWindow = new Windows.LibraryStorageWindows.StorageLogin();
                     storageLoginWindow.Show();
                     break;
                 case 3:
+                    //Нажата кнопка "Выйти"
                     Close();
                     break;
             }

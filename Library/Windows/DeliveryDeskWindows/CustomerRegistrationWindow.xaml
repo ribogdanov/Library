@@ -23,15 +23,15 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Зарегистрировать читателя</TextBlock>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">ID:</TextBlock>
-        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Имя</TextBlock>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Имя*</TextBlock>
         <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Фамилия</TextBlock>
         <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Отчество:</TextBlock>
-        <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Пароль</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1"/>
-        <TextBox Grid.Row="3" Grid.Column="1"/>
-        <TextBox Grid.Row="4" Grid.Column="1"/>
-        <TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">12345</TextBox>
-        <Button Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="170" FontSize="15">Зарегистрировать</Button>
-        <Button Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Назад</Button>
+        <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Пароль*</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="NameTextBox"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="SurnameTextBox"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Name="PatronymicTextBox"/>
+        <TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Name="PasswordTextBox">12345</TextBox>
+        <Button Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="170" FontSize="15" Click="Button_Click" Tag="0">Зарегистрировать</Button>
+        <Button Grid.Row="7" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="1">Назад</Button>
     </Grid>
 </Window>

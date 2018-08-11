@@ -121,6 +121,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(RenewDocumentQuery, new SqlParameter("@dueDate", currentBook.DueDate + month), new SqlParameter("currentCDIID", currentBook.CDInteractionID));
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentBook.CDInteractionID));
 
+                                //Обновление данных в DataGrid:
                                 BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.CustomerOverviewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
                                 BooksDataGrid.ItemsSource = null;
                                 BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
@@ -141,6 +142,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(RenewDocumentQuery, new SqlParameter("@dueDate", currentPeriodical.DueDate + month), new SqlParameter("currentCDIID", currentPeriodical.CDInteractionID));
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentPeriodical.CDInteractionID));
 
+                                //Обновление данных в DataGrid:
                                 PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.CustomerOverviewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
                                 PeriodicalsDataGrid.ItemsSource = null;
                                 PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;

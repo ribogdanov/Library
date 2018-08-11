@@ -34,14 +34,17 @@ namespace Library.Windows.SearchWindows
             switch (tagInt)
             {
                 case 0:
+                    //Нажата кнопка "Искать книгу"
                     bookSearchWindow = new BookSearchWindow();
                     bookSearchWindow.Show();
                     break;
                 case 1:
+                    //Нажата кнопка "Искать периодическое издание"
                     periodicalSearchWindow = new PeriodicalSearchWindow();
                     periodicalSearchWindow.Show();
                     break;
                 case 2:
+                    //Нажата кнопка "Назад"
                     Close();
                     break;
             }
