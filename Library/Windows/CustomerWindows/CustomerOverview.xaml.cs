@@ -103,6 +103,7 @@ where CustomerDocumentInteraction.CustomerID=@id
         {
             const string RenewDocumentQuery = @"update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set DueDate=@dueDate, IfRenewed=1 where CDInteractionID=@currentCDIID";
             const string AddRenewalDateQuery = @"insert [Coursework_2018].[dbo].[RenewalDates] (CDInteractionID, RenewalDate) values (@currentCDIID, getdate())";
+
             var button = sender as Button;
             var tag = button.Tag as string;
             var tagInt = Convert.ToInt32(tag);
@@ -113,7 +114,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                     if (BooksDataGrid.SelectedItem != null)
                     {
                         QueryResultClasses.CustomerOverviewWindow_BooksDataGrid currentBook = (QueryResultClasses.CustomerOverviewWindow_BooksDataGrid)BooksDataGrid.SelectedItem;
-                        if (currentBook.Status == "Taken")
+                        if (currentBook.Status == "Taken" || currentBook.Status == "Overdue")
                         {
                             using (TheContext db = new TheContext())
                             {
@@ -134,7 +135,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                     if (PeriodicalsDataGrid.SelectedItem != null)
                     {
                         QueryResultClasses.CustomerOverviewWindow_PeriodicalsDataGrid currentPeriodical = (QueryResultClasses.CustomerOverviewWindow_PeriodicalsDataGrid)PeriodicalsDataGrid.SelectedItem;
-                        if (currentPeriodical.Status == "Taken")
+                        if (currentPeriodical.Status == "Taken" || currentPeriodical.Status == "Overdue")
                         {
                             using (TheContext db = new TheContext())
                             {
@@ -164,10 +165,7 @@ where CustomerDocumentInteraction.CustomerID=@id
 
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            //Изменение формата представления даты:
-            if (e.PropertyType == typeof(System.DateTime))
-                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
-            //Изменение заголовков столбцов:
+            //Изменение заголовков столбцов и формата представления даты:
             string header = e.Column.Header.ToString();
             switch (header)
             {
@@ -194,17 +192,21 @@ where CustomerDocumentInteraction.CustomerID=@id
                     break;
                 case "DueDate":
                     e.Column.Header = "Вернуть до";
+                    (e.Column as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
                     break;
                 case "CheckedOutDate":
                     e.Column.Header = "Дата выдачи";
+                    (e.Column as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
                     break;
                 case "FactReturnDate":
                     e.Column.Header = "Дата возврата";
+                    (e.Column as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
                     break;
                 case "IfRenewed":
                     e.Column.Header = "Документ продлен?";
                     break;
                 case "CDInteractionID":
+                    //Не отображать столбец в DataGrid:
                     e.Cancel = true;
                     break;
             }
