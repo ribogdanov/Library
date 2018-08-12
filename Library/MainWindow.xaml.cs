@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,22 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
+            CheckIfOverdue();
+        }
+
+        public void CheckIfOverdue()
+        {
+            const string GetCDIQuery = "select * from[Coursework_2018].[dbo].[CustomerDocumentInteraction]";
+            const string SetStatusOverdueQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set Status = 'Overdue' where CDInteractionID = @id";
+            using (var db = new TheContext())
+            {
+                var customerDocumentInteractions = db.CustomerDocumentInteractions.SqlQuery(GetCDIQuery).ToList();
+                foreach (var item in customerDocumentInteractions)
+                {
+                    if (item.DueDate < DateTime.Now)
+                        db.Database.ExecuteSqlCommand(SetStatusOverdueQuery, new SqlParameter("@id", item.CDInteractionID));
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

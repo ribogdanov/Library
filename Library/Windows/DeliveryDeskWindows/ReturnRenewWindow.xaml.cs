@@ -89,9 +89,9 @@ where CustomerDocumentInteraction.CustomerID=@id
 
         private const string GetCustomerByIDQuery = "select * from[Coursework_2018].[dbo].[Customer] where CustomerID = @id";
 
-        const string RenewDocumentQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set DueDate=@dueDate, IfRenewed=1 where CDInteractionID=@currentCDIID";
-        const string AddRenewalDateQuery = "insert [Coursework_2018].[dbo].[RenewalDates] (CDInteractionID, RenewalDate) values (@currentCDIID, getdate())";
-        const string ReturnDocumentQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set FactReturnDate=@factReturnDate, Status='Returned' where CDInteractionID=@currentCDIID";
+        private const string RenewDocumentQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set DueDate=@dueDate, IfRenewed=1 where CDInteractionID=@currentCDIID";
+        private const string AddRenewalDateQuery = "insert [Coursework_2018].[dbo].[RenewalDates] (CDInteractionID, RenewalDate) values (@currentCDIID, getdate())";
+        private const string ReturnDocumentQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set FactReturnDate=@factReturnDate, Status='Returned' where CDInteractionID=@currentCDIID";
 
         public ReturnRenewWindow()
         {
