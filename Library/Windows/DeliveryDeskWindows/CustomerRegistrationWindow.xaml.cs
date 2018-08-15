@@ -42,11 +42,7 @@ namespace Library.Windows.DeliveryDeskWindows
                     if (NameTextBox.Text != "" && PasswordTextBox.Text != "")
                         using (TheContext db = new TheContext())
                         {
-                            //db.Database.ExecuteSqlCommand(CreateUserSqlQuery, new SqlParameter("@name", NameTextBox.Text), new SqlParameter("@surname", SurnameTextBox.Text), new SqlParameter("@patronymic", PatronymicTextBox.Text), new SqlParameter("@password", PasswordTextBox.Text));
-                            //UserIDObject = db.Database.SqlQuery<QueryResultClasses.CustomerRegistration_GetUserID>(GetUserID).ToList();
-
                             UserIDObject = db.Database.SqlQuery<QueryResultClasses.CustomerRegistration_GetUserID>(CreateUserGetIdQuery, new SqlParameter("@name", NameTextBox.Text), new SqlParameter("@surname", SurnameTextBox.Text), new SqlParameter("@patronymic", PatronymicTextBox.Text), new SqlParameter("@password", PasswordTextBox.Text)).ToList();
-
                             UserID = UserIDObject[0].ID;
                         }
                     MessageBoxResult result = MessageBox.Show($"Создана запись пользователя {NameTextBox.Text} {PatronymicTextBox.Text} {SurnameTextBox.Text}\n ID={UserID}");

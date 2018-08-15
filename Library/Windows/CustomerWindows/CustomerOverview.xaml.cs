@@ -26,7 +26,7 @@ namespace Library.Windows.CustomerWindows
         private const string BooksDataGridSqlQuery = @"
         select
     Book.Title,
-	STRING_AGG(Concat(Author.Surname, ' ', Author.Name), ', ') as Authors,
+	string_agg (Concat(Author.Surname, ' ', Author.Name, ' ', Author.Patronymic), ', ') as Authors,
 	BookItem.ISBN,
 	CustomerDocumentInteraction.Status,
 	CustomerDocumentInteraction.DueDate,
@@ -84,6 +84,7 @@ where CustomerDocumentInteraction.CustomerID=@id
 ";
         #endregion
         private int UserID { get; set; }
+
         public CustomerOverview(Customer user)
         {
             InitializeComponent();
@@ -103,6 +104,7 @@ where CustomerDocumentInteraction.CustomerID=@id
         {
             const string RenewDocumentQuery = @"update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set DueDate=@dueDate, IfRenewed=1 where CDInteractionID=@currentCDIID";
             const string AddRenewalDateQuery = @"insert [Coursework_2018].[dbo].[RenewalDates] (CDInteractionID, RenewalDate) values (@currentCDIID, getdate())";
+            const string SetStatusTakenQuery = "update [Coursework_2018].[dbo].[CustomerDocumentInteraction] set Status = 'Taken' where CDInteractionID = @id";
 
             var button = sender as Button;
             var tag = button.Tag as string;
@@ -119,7 +121,10 @@ where CustomerDocumentInteraction.CustomerID=@id
                             using (TheContext db = new TheContext())
                             {
                                 TimeSpan month = new TimeSpan(31, 0, 0, 0);
+
                                 db.Database.ExecuteSqlCommand(RenewDocumentQuery, new SqlParameter("@dueDate", currentBook.DueDate + month), new SqlParameter("currentCDIID", currentBook.CDInteractionID));
+                                if (currentBook.DueDate + month > DateTime.Now)
+                                    db.Database.ExecuteSqlCommand(SetStatusTakenQuery, new SqlParameter("@id", currentBook.CDInteractionID));
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentBook.CDInteractionID));
 
                                 //Обновление данных в DataGrid:
@@ -141,6 +146,8 @@ where CustomerDocumentInteraction.CustomerID=@id
                             {
                                 TimeSpan month = new TimeSpan(31, 0, 0, 0);
                                 db.Database.ExecuteSqlCommand(RenewDocumentQuery, new SqlParameter("@dueDate", currentPeriodical.DueDate + month), new SqlParameter("currentCDIID", currentPeriodical.CDInteractionID));
+                                if (currentPeriodical.DueDate + month > DateTime.Now)
+                                    db.Database.ExecuteSqlCommand(SetStatusTakenQuery, new SqlParameter("@id", currentPeriodical.CDInteractionID));
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentPeriodical.CDInteractionID));
 
                                 //Обновление данных в DataGrid:

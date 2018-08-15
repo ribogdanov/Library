@@ -189,6 +189,8 @@
     <Compile Include="Windows\SearchWindows\PeriodicalSearchWindow.xaml.cs">
       <DependentUpon>PeriodicalSearchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\SearchWindows\QueryResultClasses\BookSearchWindow_BookItemsDataGrid.cs" />
+    <Compile Include="Windows\SearchWindows\QueryResultClasses\BookSearchWindow_BooksDataGrid.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
