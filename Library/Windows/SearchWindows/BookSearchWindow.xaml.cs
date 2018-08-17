@@ -351,7 +351,9 @@ where x.AuthorPatronymics like @patronymic
                         MessageBoxResult result = MessageBox.Show("Введите данные для поиска.");
                         AllBooks();
                     }
-                        break;
+
+                    BookItemsDataGrid.ItemsSource = null;
+                    break;
                 case 1:
                     //Нажата кнопка "Искать книгу по названию"
                     if (TitleTextBox.Text != "")
@@ -394,6 +396,7 @@ group by
                         MessageBoxResult result = MessageBox.Show("Введите данные для поиска.");
                         AllBooks();
                     }
+                    BookItemsDataGrid.ItemsSource = null;
                     break;
                 case 2:
                     //Нажата кнопка "Назад"
@@ -415,7 +418,7 @@ group by
                     e.Column.Header = "Название книги";
                     break;
                 case "StoredItemsNumber":
-                    e.Column.Header = "Количество копий в наличии";
+                    e.Column.Header = "Количество экземпляров в наличии";
                     break;
                 case "Language":
                     e.Column.Header = "Язык";

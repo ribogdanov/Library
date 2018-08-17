@@ -61,7 +61,7 @@
         </Grid>
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Row="2">Книги:</TextBlock>
         <DataGrid Grid.Row="3" Name="BooksDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="BooksDataGrid_OnAutoGeneratingColumn" SelectionChanged="BooksDataGrid_SelectionChanged"/>
-        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Row="4">Копии выбранной книги:</TextBlock>
+        <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Row="4">Экземпляры выбранной книги:</TextBlock>
         <DataGrid Grid.Row="5" Name="BookItemsDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="BookItemsDataGrid_AutoGeneratingColumn"/>
         <Button Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="2">Назад</Button>
     </Grid>

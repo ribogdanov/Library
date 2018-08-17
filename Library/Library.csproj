@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="Windows\SearchWindows\QueryResultClasses\BookSearchWindow_BookItemsDataGrid.cs" />
     <Compile Include="Windows\SearchWindows\QueryResultClasses\BookSearchWindow_BooksDataGrid.cs" />
+    <Compile Include="Windows\SearchWindows\QueryResultClasses\PeriodicalSearchWindow_PeriodicalItemsDataGrid.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
