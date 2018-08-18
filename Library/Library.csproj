@@ -141,6 +141,8 @@
       <DependentUpon>MainDeliveryDeskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DeliveryDeskWindows\QueryResultClasses\CustomerRegistration_GetUserID.cs" />
+    <Compile Include="Windows\DeliveryDeskWindows\QueryResultClasses\ReturnRenewWindow_BooksDataGrid.cs" />
+    <Compile Include="Windows\DeliveryDeskWindows\QueryResultClasses\ReturnRenewWindow_PeriodicalsDataGrid.cs" />
     <Compile Include="Windows\DeliveryDeskWindows\ReturnRenewWindow.xaml.cs">
       <DependentUpon>ReturnRenewWindow.xaml</DependentUpon>
     </Compile>
