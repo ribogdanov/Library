@@ -283,7 +283,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                     break;
                 case "DocumentItemID":
                     //Не отображать столбец в DataGrid:
-                    //e.Cancel = true;
+                    e.Cancel = true;
                     break;
             }
         }

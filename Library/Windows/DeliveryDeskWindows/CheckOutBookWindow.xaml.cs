@@ -399,7 +399,7 @@ group by
                     BookItemsDataGrid.ItemsSource = null;
                     break;
                 case 2:
-                    //Нажата кнопка "Выдать выбранный экземпляр читателю"
+                    //Нажата кнопка "Выдать выбранный экземпляр книги читателю"
                     if (CustomerIDTextBox.Text != "")
                     {
                         if (BookItemsDataGrid.SelectedItem != null)
@@ -427,7 +427,7 @@ group by
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Выберите книгу.");
+                            MessageBoxResult result = MessageBox.Show("Выберите экземпляр книги.");
                         }
                     }
                     else
