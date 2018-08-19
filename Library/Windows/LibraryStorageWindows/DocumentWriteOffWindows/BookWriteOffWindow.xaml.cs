@@ -13,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Library.Windows.DeliveryDeskWindows
+namespace Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows
 {
     /// <summary>
-    /// Логика взаимодействия для CheckOutBookWindow.xaml
+    /// Логика взаимодействия для BookWriteOffWindow.xaml
     /// </summary>
-    public partial class CheckOutBookWindow : Window
+    public partial class BookWriteOffWindow : Window
     {
-        public CheckOutBookWindow()
+        public BookWriteOffWindow()
         {
             InitializeComponent();
             AllBooks();
@@ -399,47 +399,36 @@ group by
                     BookItemsDataGrid.ItemsSource = null;
                     break;
                 case 2:
-                    //Нажата кнопка "Выдать выбранный экземпляр книги читателю"
-                    if (CustomerIDTextBox.Text != "")
+                    //Нажата кнопка "Списать выбранный экземпляр книги"
+                    if (BookItemsDataGrid.SelectedItem != null)
                     {
-                        if (BookItemsDataGrid.SelectedItem != null)
+                        using (var db = new TheContext())
                         {
-                            using (var db = new TheContext())
+                            SearchWindows.QueryResultClasses.BookSearchWindow_BookItemsDataGrid currentBookItem = (SearchWindows.QueryResultClasses.BookSearchWindow_BookItemsDataGrid)BookItemsDataGrid.SelectedItem;
+
+                            if (currentBookItem.Status == "Available")
                             {
-                                SearchWindows.QueryResultClasses.BookSearchWindow_BookItemsDataGrid currentBookItem = (SearchWindows.QueryResultClasses.BookSearchWindow_BookItemsDataGrid)BookItemsDataGrid.SelectedItem;
-
-                                if (currentBookItem.Status == "Available")
+                                const string WriteOffDocumentQuery = "update [Coursework_2018].[dbo].[DocumentItem] set Status = 'Written off', WrittenOffDate = getdate() where DocumentItemID = @id";
+                                db.Database.ExecuteSqlCommand(WriteOffDocumentQuery, new SqlParameter("@id", currentBookItem.DocumentItemID));
+                                //Обновление данных в BookItemsDataGrid:
+                                BookItemsByBook();
+                            }
+                            else
+                            {
+                                if (currentBookItem.Status == "Unavailable")
                                 {
-                                    const string CreateCustomerDocumentInteractionQuery = @"insert into [Coursework_2018].[dbo].[CustomerDocumentInteraction] (CustomerID, DocumentItemID, CheckedOutDate, DueDate, IfRenewed, Status) values (@customerID, @documentItemID, getdate(), dateadd(month, 1, getdate()), 0, 'Taken')";
-                                    const string SetDocumentStatusUnavailableQuery = "update[Coursework_2018].[dbo].[DocumentItem] set Status = 'Unavailable' where DocumentItemID = @documentItemId";
-
-                                    db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
-                                    db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
-
-                                    //Обновление данных в BookItemsDataGrid:
-                                    BookItemsByBook();
+                                    MessageBoxResult result = MessageBox.Show("Книга используется читателем библиотеки, списание невозможно.");
                                 }
-                                else
+                                if (currentBookItem.Status == "Written off")
                                 {
-                                    if (currentBookItem.Status == "Unavailable")
-                                    {
-                                        MessageBoxResult result = MessageBox.Show("Книга используется читателем библиотеки, выдача невозможна.");
-                                    }
-                                    if (currentBookItem.Status == "Written off")
-                                    {
-                                        MessageBoxResult result = MessageBox.Show("Книга списана из фонда библиотеки, выдача невозможна.");
-                                    }
+                                    MessageBoxResult result = MessageBox.Show("Книга уже списана из фонда библиотеки.");
                                 }
                             }
-                        }
-                        else
-                        {
-                            MessageBoxResult result = MessageBox.Show("Выберите экземпляр книги.");
                         }
                     }
                     else
                     {
-                        MessageBoxResult result = MessageBox.Show("Введите ID читателя.");
+                        MessageBoxResult result = MessageBox.Show("Выберите экземпляр книги.");
                     }
                     break;
                 case 3:

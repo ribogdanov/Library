@@ -170,8 +170,14 @@
     <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalWindow.xaml.cs">
       <DependentUpon>AddPeriodicalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindow.xaml.cs">
-      <DependentUpon>DocumentWriteOffWindow.xaml</DependentUpon>
+    <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\BookWriteOffWindow.xaml.cs">
+      <DependentUpon>BookWriteOffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\MainDocumentWriteOffWindow.xaml.cs">
+      <DependentUpon>MainDocumentWriteOffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\PeriodicalWriteOffWindow.xaml.cs">
+      <DependentUpon>PeriodicalWriteOffWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LibraryStorageWindows\MainStorageWindow.xaml.cs">
       <DependentUpon>MainStorageWindow.xaml</DependentUpon>
@@ -270,7 +276,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\DocumentWriteOffWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\BookWriteOffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\MainDocumentWriteOffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\PeriodicalWriteOffWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

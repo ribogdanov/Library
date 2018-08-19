@@ -13,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Library.Windows.DeliveryDeskWindows
+namespace Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows
 {
     /// <summary>
-    /// Логика взаимодействия для CheckOutPeriodicalWindow.xaml
+    /// Логика взаимодействия для PeriodicalWriteOffWindow.xaml
     /// </summary>
-    public partial class CheckOutPeriodicalWindow : Window
+    public partial class PeriodicalWriteOffWindow : Window
     {
-        public CheckOutPeriodicalWindow()
+        public PeriodicalWriteOffWindow()
         {
             InitializeComponent();
             AllPeriodicals();
@@ -94,47 +94,36 @@ namespace Library.Windows.DeliveryDeskWindows
                     PeriodicalItemsDataGrid.ItemsSource = null;
                     break;
                 case 2:
-                    //Нажата кнопка "Выдать выбранный экземпляр периодического издания читателю"
-                    if (CustomerIDTextBox.Text != "")
+                    //Нажата кнопка "Списать выбранный экземпляр периодического издания"
+                    if (PeriodicalItemsDataGrid.SelectedItem != null)
                     {
-                        if (PeriodicalItemsDataGrid.SelectedItem != null)
+                        using (var db = new TheContext())
                         {
-                            using (var db = new TheContext())
+                            SearchWindows.QueryResultClasses.PeriodicalSearchWindow_PeriodicalItemsDataGrid currentPeriodicalItem = (SearchWindows.QueryResultClasses.PeriodicalSearchWindow_PeriodicalItemsDataGrid)PeriodicalItemsDataGrid.SelectedItem;
+
+                            if (currentPeriodicalItem.Status == "Available")
                             {
-                                SearchWindows.QueryResultClasses.PeriodicalSearchWindow_PeriodicalItemsDataGrid currentPeriodicalItem = (SearchWindows.QueryResultClasses.PeriodicalSearchWindow_PeriodicalItemsDataGrid)PeriodicalItemsDataGrid.SelectedItem;
-
-                                if (currentPeriodicalItem.Status == "Available")
+                                const string WriteOffDocumentQuery = "update [Coursework_2018].[dbo].[DocumentItem] set Status = 'Written off', WrittenOffDate = getdate() where DocumentItemID = @id";
+                                db.Database.ExecuteSqlCommand(WriteOffDocumentQuery, new SqlParameter("@id", currentPeriodicalItem.DocumentItemID));
+                                //Обновление данных в PeriodicalItemsDataGrid:
+                                ItemsByIssue();
+                            }
+                            else
+                            {
+                                if (currentPeriodicalItem.Status == "Unavailable")
                                 {
-                                    const string CreateCustomerDocumentInteractionQuery = @"insert into [Coursework_2018].[dbo].[CustomerDocumentInteraction] (CustomerID, DocumentItemID, CheckedOutDate, DueDate, IfRenewed, Status) values (@customerID, @documentItemID, getdate(), dateadd(month, 1, getdate()), 0, 'Taken')";
-                                    const string SetDocumentStatusUnavailableQuery = "update[Coursework_2018].[dbo].[DocumentItem] set Status = 'Unavailable' where DocumentItemID = @documentItemId";
-
-                                    db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
-                                    db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
-
-                                    //Обновление данных в PeriodicalItemsDataGrid:
-                                    ItemsByIssue();
+                                    MessageBoxResult result = MessageBox.Show("Периодическое издание используется читателем библиотеки, списание невозможно.");
                                 }
-                                else
+                                if (currentPeriodicalItem.Status == "Written off")
                                 {
-                                    if (currentPeriodicalItem.Status == "Unavailable")
-                                    {
-                                        MessageBoxResult result = MessageBox.Show("Периодическое издание используется читателем библиотеки, выдача невозможна.");
-                                    }
-                                    if (currentPeriodicalItem.Status == "Written off")
-                                    {
-                                        MessageBoxResult result = MessageBox.Show("Периодическое издание списано из фонда библиотеки, выдача невозможна.");
-                                    }
+                                    MessageBoxResult result = MessageBox.Show("Периодическое издание уже списано из фонда библиотеки.");
                                 }
                             }
-                        }
-                        else
-                        {
-                            MessageBoxResult result = MessageBox.Show("Выберите экземпляр периодического издания.");
                         }
                     }
                     else
                     {
-                        MessageBoxResult result = MessageBox.Show("Введите ID читателя.");
+                        MessageBoxResult result = MessageBox.Show("Выберите экземпляр периодического издания.");
                     }
                     break;
                 case 3:

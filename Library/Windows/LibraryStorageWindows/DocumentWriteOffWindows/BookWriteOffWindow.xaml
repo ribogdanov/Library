@@ -1,0 +1,77 @@
+﻿<Window x:Class="Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows.BookWriteOffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows"
+        mc:Ignorable="d"
+        Title="Списать книгу" Height="800" MinHeight="800" Width="800" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Списать книгу</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="190"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Поиск книги:</TextBlock>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Поиск по автору</TextBlock>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Имя:</TextBlock>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Фамилия:</TextBlock>
+                    <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Отчество:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="NameTextBox"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="SurnameTextBox"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="PatronymicTextBox"/>
+                    <Button Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="0">Искать</Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Поиск по названию</TextBlock>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Название:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="TitleTextBox"/>
+                    <Button Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="1">Искать</Button>
+                </Grid>
+            </Grid>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Row="2">Книги:</TextBlock>
+            <DataGrid Grid.Row="3" Name="BooksDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="BooksDataGrid_OnAutoGeneratingColumn" SelectionChanged="BooksDataGrid_SelectionChanged"/>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Grid.Row="4">Экземпляры выбранной книги:</TextBlock>
+            <DataGrid Grid.Row="5" Name="BookItemsDataGrid"  IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="BookItemsDataGrid_AutoGeneratingColumn"/>
+        </Grid>
+        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="300" FontSize="15" Click="Button_Click" Tag="2">Списать выбранный экземляр</Button>
+        <Button Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="3">Назад</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows.PeriodicalWriteOffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows"
+        mc:Ignorable="d"
+        Title="Списать периодическое издание" Height="800" MinHeight="800" Width="800" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Списать периодическое издание</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Поиск периодического издания:</TextBlock>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.ColumnSpan="2">Поиск издания по названию</TextBlock>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Название издания:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="PeriodicalNameTextBox"></TextBox>
+                    <Button Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="0">Искать</Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.ColumnSpan="2">Поиск выпуска выбранного издания по номеру</TextBlock>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Номер выпуска:</TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="IssueNumberTextBox"></TextBox>
+                        <Button Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="1">Искать</Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18">Периодические издания:</TextBlock>
+            <DataGrid Grid.Row="3" Name="PeriodicalsDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="PeriodicalsDataGrid_AutoGeneratingColumn" SelectionChanged="PeriodicalsDataGrid_SelectionChanged"/>
+            <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18">Выпуски выбранного периодического издания:</TextBlock>
+            <DataGrid Grid.Row="5" Name="PeriodicalIssuesDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="PeriodicalIssuesDataGrid_AutoGeneratingColumn" SelectionChanged="PeriodicalIssuesDataGrid_SelectionChanged"/>
+            <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18">Экземпляры выбранного выпуска:</TextBlock>
+            <DataGrid Grid.Row="7" Name="PeriodicalItemsDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="PeriodicalItemsDataGrid_AutoGeneratingColumn"/>
+        </Grid>
+        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="300" FontSize="15" Click="Button_Click" Tag="2">Списать выбранный экземляр</Button>
+        <Button Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="3">Назад</Button>
+    </Grid>
+</Window>

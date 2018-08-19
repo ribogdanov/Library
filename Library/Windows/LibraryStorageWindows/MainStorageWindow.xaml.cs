@@ -21,7 +21,7 @@ namespace Library.Windows.LibraryStorageWindows
     {
         public AddBookMainWindow addBookMainWindow { get; set; }
         public AddPeriodicalMainWindow addPeriodicalMainWindow { get; set; }
-        public DocumentWriteOffWindow documentWriteOffWindow { get; set; }
+        public DocumentWriteOffWindows.MainDocumentWriteOffWindow documentWriteOffWindow { get; set; }
         public OverdueDocumentsOverviewWindow overdueDocumentsOverviewWindow { get; set; }
         public SearchWindows.MainSearchWindow mainSearchwindow { get; set; }
         public MainStorageWindow()
@@ -45,7 +45,7 @@ namespace Library.Windows.LibraryStorageWindows
                     addPeriodicalMainWindow.Show();
                     break;
                 case 2:
-                    documentWriteOffWindow = new DocumentWriteOffWindow();
+                    documentWriteOffWindow = new DocumentWriteOffWindows.MainDocumentWriteOffWindow();
                     documentWriteOffWindow.Show();
                     break;
                 case 3:
