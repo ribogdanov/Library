@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
         mc:Ignorable="d"
-        Title="Просмотр невозвращенных документов" Height="500" MinHeight="500" Width="800" MinWidth="800">
+        Title="Просмотр невозвращенных документов" Height="500" MinHeight="500" Width="800" MinWidth="800" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -13,20 +13,18 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Просмотр невозвращенных документов</TextBlock>
-        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35"  Width="140" FontSize="15">Назад</Button>
+        <Button Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="35"  Width="140" FontSize="15" Margin="327,7.2,326.6,0" Click="Button_Click">Назад</Button>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Книги:</TextBlock>
-            <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Периодические издания:</TextBlock>
-            <DataGrid Grid.Row="1"/>
-            <DataGrid Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Периодические издания:</TextBlock>
+            <DataGrid Grid.Row="1" Name="BooksDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="AutoGeneratingColumn"/>
+            <DataGrid Grid.Row="3" Grid.Column="1" Name="PeriodicalsDataGrid" IsReadOnly="True" CanUserAddRows="False" AutoGeneratingColumn="AutoGeneratingColumn"/>
         </Grid>
     </Grid>
 </Window>

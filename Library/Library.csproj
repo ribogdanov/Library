@@ -185,6 +185,8 @@
     <Compile Include="Windows\LibraryStorageWindows\OverdueDocumentsOverviewWindow.xaml.cs">
       <DependentUpon>OverdueDocumentsOverviewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\LibraryStorageWindows\QueryResultClasses\OverdueDocumentsOverviewWindow_BooksDataGrid.cs" />
+    <Compile Include="Windows\LibraryStorageWindows\QueryResultClasses\OverdueDocumentsOverview_PeriodicalsDataGrid.cs" />
     <Compile Include="Windows\LibraryStorageWindows\StorageLogin.xaml.cs">
       <DependentUpon>StorageLogin.xaml</DependentUpon>
     </Compile>

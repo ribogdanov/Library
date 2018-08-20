@@ -23,7 +23,7 @@ namespace Library.Windows.DeliveryDeskWindows
         private List<QueryResultClasses.ReturnRenewWindow_BooksDataGrid> BooksDataGridQueryResult { get; set; }
         #region BooksDataGridSqlQuery
         private const string BooksDataGridSqlQuery = @"
-        select
+select
     Book.Title,
 	string_agg (Concat(Author.Surname, ' ', Author.Name, ' ', Author.Patronymic), ', ') as Authors,
 	BookItem.ISBN,
