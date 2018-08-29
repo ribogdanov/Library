@@ -40,12 +40,14 @@ namespace Library.Windows.DeliveryDeskWindows
                 case 0:
                     //Нажата кнопка "Зарегистрировать"
                     if (NameTextBox.Text != "" && PasswordTextBox.Text != "")
+                    {
                         using (TheContext db = new TheContext())
                         {
                             UserIDObject = db.Database.SqlQuery<QueryResultClasses.CustomerRegistration_GetUserID>(CreateUserGetIdQuery, new SqlParameter("@name", NameTextBox.Text), new SqlParameter("@surname", SurnameTextBox.Text), new SqlParameter("@patronymic", PatronymicTextBox.Text), new SqlParameter("@password", PasswordTextBox.Text)).ToList();
                             UserID = UserIDObject[0].ID;
                         }
-                    MessageBoxResult result = MessageBox.Show($"Создана запись пользователя {NameTextBox.Text} {PatronymicTextBox.Text} {SurnameTextBox.Text}\n ID={UserID}");
+                        MessageBoxResult result = MessageBox.Show($"Создана запись пользователя {NameTextBox.Text} {PatronymicTextBox.Text} {SurnameTextBox.Text}\n ID={UserID}");
+                    }
                     break;
                 case 1:
                     //Нажата кнопка "Выйти"

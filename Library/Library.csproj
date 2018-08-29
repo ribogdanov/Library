@@ -146,28 +146,31 @@
     <Compile Include="Windows\DeliveryDeskWindows\ReturnRenewWindow.xaml.cs">
       <DependentUpon>ReturnRenewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddAuthorWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\AddAuthorWindow.xaml.cs">
       <DependentUpon>AddAuthorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddBookItemWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookItemWindow.xaml.cs">
       <DependentUpon>AddBookItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddBookMainWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookMainWindow.xaml.cs">
       <DependentUpon>AddBookMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddBookWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookWindow.xaml.cs">
       <DependentUpon>AddBookWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalIssueWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\QueryResultClasses\AddBookItemWindow_DocumentItemID.cs" />
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\QueryResultClasses\AddBookMainWindow_BooksDataGrid.cs" />
+    <Compile Include="Windows\LibraryStorageWindows\AddBooksWindows\QueryResultClasses\AddBookWindow_Author.cs" />
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalIssueWindow.xaml.cs">
       <DependentUpon>AddPeriodicalIssueWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalItemWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalItemWindow.xaml.cs">
       <DependentUpon>AddPeriodicalItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalMainWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalMainWindow.xaml.cs">
       <DependentUpon>AddPeriodicalMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalWindow.xaml.cs">
+    <Compile Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalWindow.xaml.cs">
       <DependentUpon>AddPeriodicalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LibraryStorageWindows\DocumentWriteOffWindows\BookWriteOffWindow.xaml.cs">
@@ -246,35 +249,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddAuthorWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddBooksWindows\AddAuthorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddBookItemWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookItemWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddBookMainWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddBookWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddBooksWindows\AddBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalIssueWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalIssueWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalItemWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalItemWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalMainWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalWindow.xaml">
+    <Page Include="Windows\LibraryStorageWindows\AddPeriodicalsWindows\AddPeriodicalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

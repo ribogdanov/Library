@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Library.Windows.LibraryStorageWindows
 {
     /// <summary>
-    /// Логика взаимодействия для AddBookMainWindow.xaml
+    /// Логика взаимодействия для AddPeriodicalMainWindow.xaml
     /// </summary>
-    public partial class AddBookMainWindow : Window
+    public partial class AddPeriodicalMainWindow : Window
     {
-        public AddBookMainWindow()
+        public AddPeriodicalMainWindow()
         {
             InitializeComponent();
         }
