@@ -20,15 +20,15 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Добавить периодическое издание</TextBlock>
-        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Название:</TextBlock>
-        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Частота выпуска:</TextBlock>
-        <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Язык:</TextBlock>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Название*:</TextBlock>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Частота выпуска*:</TextBlock>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Язык*:</TextBlock>
         <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15">Комментарий:</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1"/>
-        <TextBox Grid.Row="2" Grid.Column="1"/>
-        <TextBox Grid.Row="3" Grid.Column="1"/>
-        <TextBox Grid.Row="4" Grid.Column="1"/>
-        <Button Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Назад</Button>
-        <Button Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Добавить</Button>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="PeriodicalNameTextBox"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="IssueRegularityTextBox"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="LanguageTextBox"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Name="CommentTextBox"/>
+        <Button Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="0">Назад</Button>
+        <Button Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="1">Добавить</Button>
     </Grid>
 </Window>

@@ -173,7 +173,7 @@ namespace Library.Windows.DeliveryDeskWindows
 
         private void PeriodicalsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            const string GetIssuesByPeriodicalIDSqlQuery = "select * from [Coursework_2018].[dbo].[PeriodicalIssue] where PeriodicalID=0";
+            const string GetIssuesByPeriodicalIDSqlQuery = "select * from [Coursework_2018].[dbo].[PeriodicalIssue] where PeriodicalID=@id";
             if (PeriodicalsDataGrid.SelectedItem != null)
             {
                 Periodical currentPeriodical = (Periodical)PeriodicalsDataGrid.SelectedItem;
@@ -182,6 +182,7 @@ namespace Library.Windows.DeliveryDeskWindows
                     var periodicalIssues = db.PeriodicalIssues.SqlQuery(GetIssuesByPeriodicalIDSqlQuery, new SqlParameter("@id", currentPeriodical.PeriodicalID)).ToList();
                     PeriodicalIssuesDataGrid.ItemsSource = periodicalIssues;
                 }
+                PeriodicalItemsDataGrid.ItemsSource = null;
             }
         }
 

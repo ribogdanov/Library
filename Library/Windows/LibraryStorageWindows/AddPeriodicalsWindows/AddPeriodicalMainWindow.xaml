@@ -5,31 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
         mc:Ignorable="d"
-        Title="Хранилище" MinHeight="800" Height="800" MinWidth="1000" Width="1000">
+        Title="Хранилище" MinHeight="600" Height="600" MinWidth="1000" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Поступление периодического издания</TextBlock>
-        <DataGrid Grid.Row="1"/>
-        <DataGrid Grid.Row="2"/>
-        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="300" FontSize="15">Добавить в базу данных новое издание</Button>
-            <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="460" FontSize="15">Добавить в базу данных новый выпуск для выбранного издания</Button>
-            <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="450" FontSize="15">Добавить экземпляр для выбранного издания и выпуска</Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Периодические издания:</TextBlock>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Выпуски выбранного издания:</TextBlock>
+            <DataGrid Grid.Row="1" IsReadOnly="True" CanUserAddRows="False" Name="PeriodicalsDataGrid" AutoGeneratingColumn="PeriodicalsDataGrid_AutoGeneratingColumn" SelectionChanged="PeriodicalsDataGrid_SelectionChanged"/>
+            <DataGrid Grid.Row="1" Grid.Column="1" IsReadOnly="True" CanUserAddRows="False" Name="PeriodicalIssuesDataGrid" AutoGeneratingColumn="PeriodicalIssuesDataGrid_AutoGeneratingColumn"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="300" FontSize="15" Click="Button_Click" Tag="0">Добавить новое издание</Button>
+                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="460" FontSize="15" Click="Button_Click" Tag="1">Добавить новый выпуск для выбранного издания</Button>
+                </Grid>
+                <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="450" FontSize="15" Click="Button_Click" Tag="2">Добавить экземпляр для выбранного издания и выпуска</Button>
+            </Grid>
         </Grid>
-        <Button Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15">Назад</Button>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="35" Width="140" FontSize="15" Click="Button_Click" Tag="3">Назад</Button>
     </Grid>
 </Window>

@@ -73,7 +73,7 @@ namespace Library.Windows.LibraryStorageWindows
                             }
                             //Обновление данных в окне-родителе:
                             DataChanged?.Invoke(this, new EventArgs());
-                            MessageBox.Show("Добавлен экземпляр книги");
+                            MessageBox.Show($"Добавлен экземпляр книги.\nID={DocumentItemID}");
                         }
                     }
                     else
