@@ -110,21 +110,44 @@ where CustomerDocumentInteraction.CustomerID=@id
             {
                 case 0:
                     //Нажата кнопка "Показать документы для читателя"
-                    if (IDTextBox.Text!="")
+                    if (IDTextBox.Text != "")
                     {
-                        UserID = Convert.ToInt32(IDTextBox.Text);
+
+                        //UserID = Convert.ToInt32(IDTextBox.Text);
                         using (var db = new TheContext())
                         {
-                            //Вывод ФИО клиента, ID которого введен:
-                            var customer = db.Customers.SqlQuery(GetCustomerByIDQuery, new SqlParameter("@id", UserID)).ToList();
-                            CustomerNameTextBox.Text = $"Читатель: {customer[0].Name} {customer[0].Patronymic} {customer[0].Surname}";
-                            //Вывод книг и периодики этого клиента:
-                            BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
-                            BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
-                            PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
-                            PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;
+                            List<Customer> customer = null;
+                            bool flag = true;
+
+                            try
+                            {
+                                //Вывод ФИО клиента, ID которого введен:
+                                customer = db.Customers.SqlQuery(GetCustomerByIDQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
+                                CustomerNameTextBox.Text = $"Читатель: {customer[0].Name} {customer[0].Patronymic} {customer[0].Surname}";
+                            }
+                            catch (Exception exception)
+                            {
+                                if (exception is ArgumentOutOfRangeException || exception is System.Data.Entity.Core.EntityCommandExecutionException)
+                                {
+                                    flag = false;
+                                    BooksDataGrid.ItemsSource = null;
+                                    PeriodicalsDataGrid.ItemsSource = null;
+                                    MessageBox.Show("Пользователя с таким ID не существует.");
+                                }
+                            }
+
+                            if (flag == true)
+                            {
+                                //Вывод книг и периодики этого клиента:
+                                BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
+                                BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
+                                PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
+                                PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;
+                            }
                         }
                     }
+                    else
+                        MessageBox.Show("Введите ID читателя.");
                     break;
                 case 1:
                     //Нажата кнопка "Принять книгу"
@@ -139,17 +162,21 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(SetDocumentStatusAvailableQuery, new SqlParameter("@id", currentBook.DocumentItemID));
                                 
                                 //Обновление данных в DataGrid:
-                                BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
+                                BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
                                 BooksDataGrid.ItemsSource = null;
                                 BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
+
+                                MessageBox.Show("Книга принята.");
                             }
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Выбранная книга уже возвращена в библиотеку");
+                            MessageBox.Show("Выбранная книга уже возвращена в библиотеку.");
                         }
                     }
-                        break;
+                    else
+                        MessageBox.Show("Выберите книгу.");
+                    break;
                 case 2:
                     //Нажата кнопка "Продлить книгу"
                     if (BooksDataGrid.SelectedItem != null)
@@ -166,16 +193,20 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentBook.CDInteractionID));
 
                                 //Обновление данных в DataGrid:
-                                BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
+                                BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
                                 BooksDataGrid.ItemsSource = null;
                                 BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
+
+                                MessageBox.Show("Книга продлена.");
                             }
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Выбранная книга уже возвращена в библиотеку");
+                            MessageBox.Show("Выбранная книга уже возвращена в библиотеку.");
                         }
                     }
+                    else
+                        MessageBox.Show("Выберите книгу.");
                     break;
                 case 3:
                     //Нажата кнопка "Принять периодическое издание"
@@ -190,16 +221,20 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(SetDocumentStatusAvailableQuery, new SqlParameter("@id", currentPeriodical.DocumentItemID));
 
                                 //Обновление данных в DataGrid:
-                                PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
+                                PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
                                 PeriodicalsDataGrid.ItemsSource = null;
                                 PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;
+
+                                MessageBox.Show("Периодическое издание принято.");
                             }
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Выбранное издание уже возвращено в библиотеку");
+                            MessageBox.Show("Выбранное издание уже возвращено в библиотеку.");
                         }
                     }
+                    else
+                        MessageBox.Show("Выберите периодическое издание.");
                     break;
                 case 4:
                     //Нажата кнопка "Продлить периодическое издание"
@@ -217,16 +252,20 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 db.Database.ExecuteSqlCommand(AddRenewalDateQuery, new SqlParameter("@currentCDIID", currentPeriodical.CDInteractionID));
 
                                 //Обновление данных в DataGrid:
-                                PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
+                                PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.ReturnRenewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", IDTextBox.Text)).ToList();
                                 PeriodicalsDataGrid.ItemsSource = null;
                                 PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;
+
+                                MessageBox.Show("Периодическое издание продлено.");
                             }
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Выбранное издание уже возвращено в библиотеку");
+                            MessageBox.Show("Выбранное издание уже возвращено в библиотеку.");
                         }
                     }
+                    else
+                        MessageBox.Show("Выберите периодическое издание.");
                     break;
                 case 5:
                     //Нажата кнопка "Назад"

@@ -45,24 +45,76 @@ namespace Library.Windows.LibraryStorageWindows
                     const string CreatePeriodicalIssueQuery = @"
 insert into[Coursework_2018].[dbo].[PeriodicalIssue] (PeriodicalID, IssueNumber, IssuePeriod, StoredItemsNumber, Publisher, Comment) 
 values (@periodicalID, @issueNumber, @issuePeriod, 0, @publisher, @comment)";
+                    const string GetIssuesByPeriodicalID = "select * from [Coursework_2018].[dbo].[PeriodicalIssue] where PeriodicalID = @periodicalID";
 
                     if (IssueNumberTextBox.Text != "" && IssuePeriodTextBox.Text != "" && PublisherTextBox.Text != "")
                     {
-                        using (var db = new TheContext())
+                        int issueNumber = 0;
+                        bool issueNumberCorrectFlag = true;
+
+                        try
                         {
-                            db.Database.ExecuteSqlCommand(CreatePeriodicalIssueQuery,
-                                new SqlParameter("@periodicalID", Periodical.PeriodicalID),
-                                new SqlParameter("@issueNumber", Convert.ToInt32(IssueNumberTextBox.Text)),
-                                //Здесь будет обработка исключения если не число
-                                new SqlParameter("@issuePeriod", IssuePeriodTextBox.Text),
-                                new SqlParameter("@publisher", PublisherTextBox.Text),
-                                new SqlParameter("@comment", CommentTextBox.Text));
+                            issueNumber = Convert.ToInt32(IssueNumberTextBox.Text);
                         }
-                        DataChanged?.Invoke(this, new EventArgs());
-                        MessageBox.Show("Выпуск периодического издания добавлен.");
+                        catch (FormatException)
+                        {
+                            MessageBox.Show("Номер издания должен быть числом.");
+                            issueNumberCorrectFlag = false;
+                        }
+
+                        if (issueNumberCorrectFlag == true)
+                        {
+                            using (var db = new TheContext())
+                            {
+                                bool noRepetitionsIssueNumberFlag = true;
+                                bool noRepetitionsIssuePeriodFlag = true;
+                                var issuesOfThePeriodical = db.PeriodicalIssues.SqlQuery(GetIssuesByPeriodicalID, new SqlParameter("@periodicalID", Periodical.PeriodicalID)).ToList();
+
+                                //Проверка, есть ли в БД записи с введенными пользователем номером и периодом выпуска.
+                                foreach (var item in issuesOfThePeriodical)
+                                {
+                                    if (item.IssueNumber == issueNumber)
+                                    {
+                                        noRepetitionsIssueNumberFlag = false;
+                                        break;
+                                    }
+                                }
+
+                                foreach (var item in issuesOfThePeriodical)
+                                {
+                                    if (item.IssuePeriod == IssuePeriodTextBox.Text)
+                                    {
+                                        noRepetitionsIssuePeriodFlag = false;
+                                        break;
+                                    }
+                                }
+
+                                if (noRepetitionsIssueNumberFlag == true && noRepetitionsIssuePeriodFlag == true)
+                                {
+                                    db.Database.ExecuteSqlCommand(CreatePeriodicalIssueQuery,
+                                        new SqlParameter("@periodicalID", Periodical.PeriodicalID),
+                                        new SqlParameter("@issueNumber", IssueNumberTextBox.Text),
+                                        //Здесь будет обработка исключения если не число
+                                        new SqlParameter("@issuePeriod", IssuePeriodTextBox.Text),
+                                        new SqlParameter("@publisher", PublisherTextBox.Text),
+                                        new SqlParameter("@comment", CommentTextBox.Text));
+                                    DataChanged?.Invoke(this, new EventArgs());
+                                    MessageBox.Show("Выпуск периодического издания добавлен.");
+                                }
+                                else
+                                {
+                                    if (noRepetitionsIssueNumberFlag == false && noRepetitionsIssuePeriodFlag == false)
+                                        MessageBox.Show("Выпуск с таким периодом выпуска и номером уже есть в базе данных, дублирование недопустимо.");
+                                    if (noRepetitionsIssueNumberFlag == false && noRepetitionsIssuePeriodFlag == true)
+                                        MessageBox.Show("Выпуск с таким номером уже есть в базе данных, дублирование недопустимо.");
+                                    if (noRepetitionsIssueNumberFlag == true && noRepetitionsIssuePeriodFlag == false)
+                                        MessageBox.Show("Выпуск с таким периодом выпуска уже есть в базе данных, дублирование недопустимо.");
+                                }
+                            }
+                        }
                     }
                     else
-                        MessageBox.Show("Необходимо заполнить все поля кроме поля 'Комментарий'");
+                        MessageBox.Show("Необходимо заполнить все поля кроме \"Комментарий\"");
                     break;
             }
         }

@@ -76,7 +76,7 @@ inner join[Coursework_2018].[dbo].[Author]
                     }
                     else
                     {
-                        MessageBox.Show("Выберите экземпляр книги.");
+                        MessageBox.Show("Выберите книгу.");
                     }
                     break;
                 case 1:

@@ -56,7 +56,7 @@ namespace Library.Windows.LibraryStorageWindows
                         MessageBox.Show("Периодическое издание добавлено.");
                     }
                     else
-                        MessageBox.Show("Необходимо заполнить все поля кроме поля 'Комментарий'");
+                        MessageBox.Show("Необходимо заполнить все поля кроме \"Комментарий\"");
                     break;
             }
         }

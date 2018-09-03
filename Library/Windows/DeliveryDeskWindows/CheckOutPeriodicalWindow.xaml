@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.DeliveryDeskWindows"
         mc:Ignorable="d"
-        Title="Выдать периодическое издание" Height="800" MinHeight="800" Width="800" MinWidth="800">
+        Title="Выдать периодическое издание" Height="800" MinHeight="800" Width="800" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.CustomerWindows"
         mc:Ignorable="d"
-        Title="Личный кабинет читателя" Height="650" MinHeight="650" Width="1080" MinWidth="1080" WindowState="Maximized">
+        Title="Личный кабинет читателя" Height="650" MinHeight="650" Width="1080" MinWidth="1080" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

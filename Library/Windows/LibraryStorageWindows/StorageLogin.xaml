@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
         mc:Ignorable="d"
-        Title="Вход: Хранилище" MinHeight="150" Height="150" MinWidth="300" Width="300">
+        Title="Вход: Хранилище" MinHeight="150" Height="150" MinWidth="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

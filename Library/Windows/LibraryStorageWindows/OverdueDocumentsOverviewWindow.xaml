@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
         mc:Ignorable="d"
-        Title="Просмотр невозвращенных документов" Height="500" MinHeight="500" Width="800" MinWidth="800" WindowState="Maximized">
+        Title="Просмотр невозвращенных документов" Height="680" MinHeight="680" Width="1315" MinWidth="1315" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

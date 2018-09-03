@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.CustomerWindows"
         mc:Ignorable="d"
-        Title="Вход: Читатель" MinHeight="180" Height="180" MinWidth="300" Width="300">
+        Title="Вход: Читатель" MinHeight="180" Height="180" MinWidth="300" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

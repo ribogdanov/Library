@@ -35,22 +35,36 @@ namespace Library.Windows.CustomerWindows
             switch (tagInt)
             {
                 case 0:
-                    using (TheContext db = new TheContext())
-                    {
-                        db.Customers.Load();
-                        var users = db.Customers;
-                        foreach (var user in users)
-                        {
-                            if (user.CustomerID.ToString() == IDTextBox.Text && user.Password == PasswordTextBox.Text)
+                    //Нажата кнопка "Войти в личный кабинет"
+                    if (IDTextBox.Text != "")
+                        if (PasswordTextBox.Text != "")
+                            using (TheContext db = new TheContext())
                             {
-                                customerOverviewWindow = new CustomerOverview(user);
-                                customerOverviewWindow.Show();
-                                break;
+                                db.Customers.Load();
+                                var users = db.Customers;
+
+                                bool flag = false;
+                                foreach (var user in users)
+                                {
+                                    if (user.CustomerID.ToString() == IDTextBox.Text && user.Password == PasswordTextBox.Text)
+                                    {
+                                        customerOverviewWindow = new CustomerOverview(user);
+                                        customerOverviewWindow.Show();
+                                        Close();
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                                if (flag == false)
+                                    MessageBox.Show("Пользователя с такими ID и паролем не существует.");
                             }
-                        }
-                    }
+                        else
+                            MessageBox.Show("Введите пароль.");
+                    else
+                        MessageBox.Show("Введите ID пользователя.");
                     break;
                 case 1:
+                    //Нажата кнопка "Назад"
                     Close();
                     break;
             }

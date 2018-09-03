@@ -412,9 +412,20 @@ group by
                                 {
                                     const string CreateCustomerDocumentInteractionQuery = @"insert into [Coursework_2018].[dbo].[CustomerDocumentInteraction] (CustomerID, DocumentItemID, CheckedOutDate, DueDate, IfRenewed, Status) values (@customerID, @documentItemID, getdate(), dateadd(month, 1, getdate()), 0, 'Taken')";
                                     const string SetDocumentStatusUnavailableQuery = "update[Coursework_2018].[dbo].[DocumentItem] set Status = 'Unavailable' where DocumentItemID = @documentItemId";
+                                    bool flag = true;
 
-                                    db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
-                                    db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
+                                    try
+                                    {
+                                        db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
+                                    }
+                                    catch (SqlException)
+                                    {
+                                        MessageBox.Show("Пользователь с указанным ID не существует");
+                                        flag = false;
+                                    }
+
+                                    if (flag == true)
+                                        db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
 
                                     //Обновление данных в BookItemsDataGrid:
                                     BookItemsByBook();

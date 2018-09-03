@@ -37,11 +37,13 @@ namespace Library.Windows.SearchWindows
                     //Нажата кнопка "Искать книгу"
                     bookSearchWindow = new BookSearchWindow();
                     bookSearchWindow.Show();
+                    Close();
                     break;
                 case 1:
                     //Нажата кнопка "Искать периодическое издание"
                     periodicalSearchWindow = new PeriodicalSearchWindow();
                     periodicalSearchWindow.Show();
+                    Close();
                     break;
                 case 2:
                     //Нажата кнопка "Назад"

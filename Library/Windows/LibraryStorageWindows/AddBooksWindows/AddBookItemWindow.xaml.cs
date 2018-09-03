@@ -78,7 +78,7 @@ namespace Library.Windows.LibraryStorageWindows
                     }
                     else
                     {
-                        MessageBox.Show("Все поля кроме поля 'Комментарий' необходимо заполнить");
+                        MessageBox.Show("Все поля кроме \"Комментарий\" необходимо заполнить");
                     }
                     break;
             }

@@ -33,13 +33,21 @@ namespace Library.Windows.DeliveryDeskWindows
             switch (tagInt)
             {
                 case 0:
-                    if (PasswordTextBox.Text == "12345")
-                    {
-                        mainDeliveryDeskWindow = new MainDeliveryDeskWindow();
-                        mainDeliveryDeskWindow.Show();
-                    }
+                    //Нажата кнопка "Войти в абонемент"
+                    if (PasswordTextBox.Text != "")
+                        if (PasswordTextBox.Text == "12345")
+                        {
+                            mainDeliveryDeskWindow = new MainDeliveryDeskWindow();
+                            mainDeliveryDeskWindow.Show();
+                            Close();
+                        }
+                        else
+                            MessageBox.Show("Введенный пароль неверен.");
+                    else
+                        MessageBox.Show("Введите пароль.");
                     break;
                 case 1:
+                    //Нажата кнопка "Назад"
                     Close();
                     break;
             }

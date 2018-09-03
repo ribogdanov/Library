@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.DeliveryDeskWindows"
         mc:Ignorable="d"
-        Title="Зарегистрировать читателя" MinHeight="350" Height="350" MinWidth="400" Width="400">
+        Title="Зарегистрировать читателя" MinHeight="350" Height="350" MinWidth="400" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

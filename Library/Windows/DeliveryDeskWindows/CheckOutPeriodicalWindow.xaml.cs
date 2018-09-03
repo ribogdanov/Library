@@ -72,12 +72,26 @@ namespace Library.Windows.DeliveryDeskWindows
                             using (TheContext db = new TheContext())
                             {
                                 Periodical currentPeriodical = (Periodical)PeriodicalsDataGrid.SelectedItem;
-                                var periodicalIssues = db.PeriodicalIssues.SqlQuery(
-                                    "select * from [Coursework_2018].[dbo].[PeriodicalIssue] where PeriodicalID=@periodicalID and IssueNumber=@issueNumber",
-                                    new SqlParameter("@periodicalID", currentPeriodical.PeriodicalID),
-                                    new SqlParameter("@issueNumber", Convert.ToInt32(IssueNumberTextBox.Text))
-                                ).ToList();
-                                PeriodicalIssuesDataGrid.ItemsSource = periodicalIssues;
+                                List<PeriodicalIssue> periodicalIssues = null;
+                                bool flag = true;
+                                try
+                                {
+                                    periodicalIssues = db.PeriodicalIssues.SqlQuery(
+                                        @"select * from [Coursework_2018].[dbo].[PeriodicalIssue] 
+                                    where PeriodicalID=@periodicalID and IssueNumber=@issueNumber",
+                                        new SqlParameter("@periodicalID", currentPeriodical.PeriodicalID),
+                                        new SqlParameter("@issueNumber", Convert.ToInt32(IssueNumberTextBox.Text))
+                                    ).ToList();
+                                }
+                                catch (FormatException)
+                                {
+                                    flag = false;
+                                    IssueNumberTextBox.Text = "";
+                                    MessageBox.Show("Номер выпуска должен быть числом.");
+                                }
+
+                                if (flag == true)
+                                    PeriodicalIssuesDataGrid.ItemsSource = periodicalIssues;
                             }
                         }
                         else
@@ -107,9 +121,21 @@ namespace Library.Windows.DeliveryDeskWindows
                                 {
                                     const string CreateCustomerDocumentInteractionQuery = @"insert into [Coursework_2018].[dbo].[CustomerDocumentInteraction] (CustomerID, DocumentItemID, CheckedOutDate, DueDate, IfRenewed, Status) values (@customerID, @documentItemID, getdate(), dateadd(month, 1, getdate()), 0, 'Taken')";
                                     const string SetDocumentStatusUnavailableQuery = "update[Coursework_2018].[dbo].[DocumentItem] set Status = 'Unavailable' where DocumentItemID = @documentItemId";
+                                    bool flag = true;
 
-                                    db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
-                                    db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
+                                    try
+                                    {
+                                        db.Database.ExecuteSqlCommand(CreateCustomerDocumentInteractionQuery, new SqlParameter("@customerID", CustomerIDTextBox.Text), new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
+                                    }
+                                    catch (SqlException)
+                                    {
+                                        
+                                        MessageBox.Show("Пользователь с указанным ID не существует");
+                                        flag = false;
+                                    }
+
+                                    if (flag == true)
+                                        db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
 
                                     //Обновление данных в PeriodicalItemsDataGrid:
                                     ItemsByIssue();

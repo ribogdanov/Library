@@ -72,12 +72,26 @@ namespace Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows
                             using (TheContext db = new TheContext())
                             {
                                 Periodical currentPeriodical = (Periodical)PeriodicalsDataGrid.SelectedItem;
-                                var periodicalIssues = db.PeriodicalIssues.SqlQuery(
-                                    "select * from [Coursework_2018].[dbo].[PeriodicalIssue] where PeriodicalID=@periodicalID and IssueNumber=@issueNumber",
-                                    new SqlParameter("@periodicalID", currentPeriodical.PeriodicalID),
-                                    new SqlParameter("@issueNumber", Convert.ToInt32(IssueNumberTextBox.Text))
-                                ).ToList();
-                                PeriodicalIssuesDataGrid.ItemsSource = periodicalIssues;
+                                List<PeriodicalIssue> periodicalIssues = null;
+                                bool flag = true;
+                                try
+                                {
+                                    periodicalIssues = db.PeriodicalIssues.SqlQuery(
+                                        @"select * from [Coursework_2018].[dbo].[PeriodicalIssue] 
+                                    where PeriodicalID=@periodicalID and IssueNumber=@issueNumber",
+                                        new SqlParameter("@periodicalID", currentPeriodical.PeriodicalID),
+                                        new SqlParameter("@issueNumber", Convert.ToInt32(IssueNumberTextBox.Text))
+                                    ).ToList();
+                                }
+                                catch (FormatException)
+                                {
+                                    flag = false;
+                                    IssueNumberTextBox.Text = "";
+                                    MessageBox.Show("Номер выпуска должен быть числом.");
+                                }
+
+                                if (flag == true)
+                                    PeriodicalIssuesDataGrid.ItemsSource = periodicalIssues;
                             }
                         }
                         else

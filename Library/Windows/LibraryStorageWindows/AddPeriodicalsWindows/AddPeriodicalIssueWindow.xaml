@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library.Windows.LibraryStorageWindows"
         mc:Ignorable="d"
-        Title="Добавить выпуск периодического издания" MinHeight="300" Height="300" MinWidth="450" Width="450">
+        Title="Добавить выпуск периодического издания" MinHeight="300" Height="300" MinWidth="450" Width="450" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

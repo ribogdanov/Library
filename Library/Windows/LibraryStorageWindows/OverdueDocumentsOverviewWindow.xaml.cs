@@ -112,7 +112,8 @@ where CustomerDocumentInteraction.Status='Overdue'
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            //Нажата единственная кнопка - "Назад"
+           Close();
         }
 
         private void AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

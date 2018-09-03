@@ -37,26 +37,32 @@ namespace Library.Windows.LibraryStorageWindows
             switch (tagInt)
             {
                 case 0:
+                    //Нажата кнопка "Поступление книги"
                     addBookMainWindow = new AddBookMainWindow();
                     addBookMainWindow.Show();
                     break;
                 case 1:
+                    //Нажата кнопка "Поступление периодического издания"
                     addPeriodicalMainWindow = new AddPeriodicalMainWindow();
                     addPeriodicalMainWindow.Show();
                     break;
                 case 2:
+                    //Нажата кнопка "Списание документа"
                     documentWriteOffWindow = new DocumentWriteOffWindows.MainDocumentWriteOffWindow();
                     documentWriteOffWindow.Show();
                     break;
                 case 3:
+                    //Нажата кнопка "Невозвращенные документы"
                     overdueDocumentsOverviewWindow = new OverdueDocumentsOverviewWindow();
                     overdueDocumentsOverviewWindow.Show();
                     break;
                 case 4:
+                    //Нажата кнопка "Поиск по базе данных документов"
                     mainSearchwindow = new SearchWindows.MainSearchWindow();
                     mainSearchwindow.Show();
                     break;
                 case 5:
+                    //Нажата кнопка "Назад"
                     Close();
                     break;
             }

@@ -33,13 +33,21 @@ namespace Library.Windows.LibraryStorageWindows
             switch (tagInt)
             {
                 case 0:
-                    if (PasswordTextBox.Text == "12345")
-                    {
-                        mainStorageWindow = new MainStorageWindow();
-                        mainStorageWindow.Show();
-                    }
+                    //Нажата кнопка "Войти в хранилище"
+                    if (PasswordTextBox.Text != "")
+                        if (PasswordTextBox.Text == "12345")
+                        {
+                            mainStorageWindow = new MainStorageWindow();
+                            mainStorageWindow.Show();
+                            Close();
+                        }
+                        else
+                            MessageBox.Show("Введенный пароль неверен.");
+                    else
+                        MessageBox.Show("Введите пароль.");
                     break;
                 case 1:
+                    //Нажата кнопка "Назад"
                     Close();
                     break;
             }

@@ -48,6 +48,8 @@ namespace Library.Windows.DeliveryDeskWindows
                         }
                         MessageBoxResult result = MessageBox.Show($"Создана запись пользователя {NameTextBox.Text} {PatronymicTextBox.Text} {SurnameTextBox.Text}\n ID={UserID}");
                     }
+                    else
+                        MessageBox.Show("Необходимо заполнить поля \"Имя\" и \"Пароль\"");
                     break;
                 case 1:
                     //Нажата кнопка "Выйти"
