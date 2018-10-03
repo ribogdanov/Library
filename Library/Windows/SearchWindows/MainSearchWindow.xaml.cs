@@ -36,14 +36,14 @@ namespace Library.Windows.SearchWindows
                 case 0:
                     //Нажата кнопка "Искать книгу"
                     bookSearchWindow = new BookSearchWindow();
-                    bookSearchWindow.Show();
                     Close();
+                    bookSearchWindow.ShowDialog();
                     break;
                 case 1:
                     //Нажата кнопка "Искать периодическое издание"
                     periodicalSearchWindow = new PeriodicalSearchWindow();
-                    periodicalSearchWindow.Show();
                     Close();
+                    periodicalSearchWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Назад"

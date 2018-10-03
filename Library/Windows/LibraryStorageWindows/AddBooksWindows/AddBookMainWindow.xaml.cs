@@ -72,7 +72,7 @@ inner join[Coursework_2018].[dbo].[Author]
                         AddBooksWindows.QueryResultClasses.AddBookMainWindow_BooksDataGrid currentBook = (AddBooksWindows.QueryResultClasses.AddBookMainWindow_BooksDataGrid)BooksDataGrid.SelectedItem;
                         addBookItemWindow = new AddBookItemWindow(currentBook);
                         addBookItemWindow.DataChanged += AddBookItemWindow_DataChanged;
-                        addBookItemWindow.Show();
+                        addBookItemWindow.ShowDialog();
                     }
                     else
                     {
@@ -83,7 +83,7 @@ inner join[Coursework_2018].[dbo].[Author]
                     //Нажата кнопка "Добавить новую книгу в базу данных"
                     addBookWindow = new AddBookWindow();
                     addBookWindow.DataChanged += AddBookWindow_DataChanged;
-                    addBookWindow.Show();
+                    addBookWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Назад"

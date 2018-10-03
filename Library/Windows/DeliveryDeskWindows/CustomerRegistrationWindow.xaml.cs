@@ -47,6 +47,9 @@ namespace Library.Windows.DeliveryDeskWindows
                             UserID = UserIDObject[0].ID;
                         }
                         MessageBoxResult result = MessageBox.Show($"Создана запись пользователя {NameTextBox.Text} {PatronymicTextBox.Text} {SurnameTextBox.Text}\n ID={UserID}");
+                        NameTextBox.Text = "";
+                        PatronymicTextBox.Text = "";
+                        SurnameTextBox.Text = "";
                     }
                     else
                         MessageBox.Show("Необходимо заполнить поля \"Имя\" и \"Пароль\"");

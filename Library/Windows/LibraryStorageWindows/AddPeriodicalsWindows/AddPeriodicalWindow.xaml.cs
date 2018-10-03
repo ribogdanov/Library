@@ -53,6 +53,13 @@ namespace Library.Windows.LibraryStorageWindows
                                 new SqlParameter("@comment", CommentTextBox.Text));
                         }
                         DataChanged?.Invoke(this, new EventArgs());
+
+                        //Очистка заполняемых полей: 
+                        PeriodicalNameTextBox.Text = "";
+                        IssueRegularityTextBox.Text = "";
+                        LanguageTextBox.Text = "";
+                        CommentTextBox.Text = "";
+
                         MessageBox.Show("Периодическое издание добавлено.");
                     }
                     else

@@ -49,7 +49,7 @@ namespace Library.Windows.LibraryStorageWindows
                     //Нажата кнопка "Добавить новое издание"
                     addPeriodicalWindow = new AddPeriodicalWindow();
                     addPeriodicalWindow.DataChanged += AddPeriodicalWindow_DataChanged;
-                    addPeriodicalWindow.Show();
+                    addPeriodicalWindow.ShowDialog();
                     break;
                 case 1:
                     //Нажата кнопка "Добавить новый выпуск для выбранного издания"
@@ -58,7 +58,7 @@ namespace Library.Windows.LibraryStorageWindows
                         Periodical currentPeriodical = (Periodical)PeriodicalsDataGrid.SelectedItem;
                         addPeriodicalIssueWindow = new AddPeriodicalIssueWindow(currentPeriodical);
                         addPeriodicalIssueWindow.DataChanged += AddPeriodicalIssueWindow_DataChanged;
-                        addPeriodicalIssueWindow.Show();
+                        addPeriodicalIssueWindow.ShowDialog();
                     }
                     else
                         MessageBox.Show("Выберите периодическое издание в таблице слева");
@@ -70,7 +70,7 @@ namespace Library.Windows.LibraryStorageWindows
                         PeriodicalIssue currentPeriodicalIssue = (PeriodicalIssue)PeriodicalIssuesDataGrid.SelectedItem;
                         addPeriodicalItemWindow = new AddPeriodicalItemWindow(currentPeriodicalIssue);
                         addPeriodicalItemWindow.DataChanged += AddPeriodicalItemWindow_DataChanged;
-                        addPeriodicalItemWindow.Show();
+                        addPeriodicalItemWindow.ShowDialog();
                     }
                     else
                         MessageBox.Show("Выберите периодическое издание в таблице слева и выпуск периодического издания в таблице справа");

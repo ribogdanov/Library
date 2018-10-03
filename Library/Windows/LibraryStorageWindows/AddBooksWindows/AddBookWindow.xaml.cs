@@ -94,7 +94,7 @@ namespace Library.Windows.LibraryStorageWindows
                     //Нажата кнопка "Добавить нового автора в базу данных"
                     addAuthorWindow = new AddAuthorWindow();
                     addAuthorWindow.DataChanged += AddAuthorWindow_DataChanged;
-                    addAuthorWindow.Show();
+                    addAuthorWindow.ShowDialog();
                     break;
                 case 3:
                     //Нажата кнопка "Назад"
@@ -113,10 +113,11 @@ namespace Library.Windows.LibraryStorageWindows
                             {
                                 //Класс, используемый в следующей строке, создавался для использования в другом месте, но подходит и сюда.
                                 List<AddBooksWindows.QueryResultClasses.AddBookItemWindow_DocumentItemID> bookIDObject = 
-                                    db.Database.SqlQuery<AddBooksWindows.QueryResultClasses.AddBookItemWindow_DocumentItemID>(AddBookGetIDQuery, 
-                                    new SqlParameter("@title", TitleTextBox.Text), 
-                                    new SqlParameter("@language", LanguageTextBox.Text), 
-                                    new SqlParameter("@comment", CommentTextBox.Text)).ToList();
+                                    db.Database.SqlQuery<AddBooksWindows.QueryResultClasses.AddBookItemWindow_DocumentItemID>(
+                                        AddBookGetIDQuery, 
+                                        new SqlParameter("@title", TitleTextBox.Text), 
+                                        new SqlParameter("@language", LanguageTextBox.Text), 
+                                        new SqlParameter("@comment", CommentTextBox.Text)).ToList();
                                 decimal bookID = bookIDObject[0].ID;
 
                                 foreach (var item in selectedAuthors)
@@ -125,6 +126,14 @@ namespace Library.Windows.LibraryStorageWindows
                                 }
                             }
                             DataChanged?.Invoke(this, new EventArgs());
+
+                            //Очистка заполняемых полей: 
+                            TitleTextBox.Text = "";
+                            LanguageTextBox.Text = "";
+                            CommentTextBox.Text = "";
+                            selectedAuthors = null;
+                            AuthorsOfTheBookDataGrid.ItemsSource = null;
+
                             MessageBox.Show("Книга добавлена");
                         }
                         else

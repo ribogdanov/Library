@@ -49,8 +49,8 @@ namespace Library.Windows.CustomerWindows
                                     if (user.CustomerID.ToString() == IDTextBox.Text && user.Password == PasswordTextBox.Text)
                                     {
                                         customerOverviewWindow = new CustomerOverview(user);
-                                        customerOverviewWindow.Show();
                                         Close();
+                                        customerOverviewWindow.ShowDialog();
                                         flag = true;
                                         break;
                                     }

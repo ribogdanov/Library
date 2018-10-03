@@ -53,6 +53,13 @@ namespace Library.Windows.LibraryStorageWindows
                                 new SqlParameter("@patronymic", PatronymicTextBox.Text));
                         }
                         DataChanged?.Invoke(this, new EventArgs());
+
+                        //Очистка заполняемых полей:
+                        NameTextBox.Text = "";
+                        SurnameTextBox.Text = "";
+                        CommentTextBox.Text = "";
+                        PatronymicTextBox.Text = "";
+
                         MessageBox.Show("Автор добавлен.");
                     }
                     else

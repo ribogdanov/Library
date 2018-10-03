@@ -60,6 +60,10 @@ namespace Library.Windows.LibraryStorageWindows
                     }
 
                     DataChanged?.Invoke(this, new EventArgs());
+
+                    //Очистка заполняемого поля:
+                    CommentTextBox.Text = "";
+
                     MessageBox.Show("Экземпляр периодического издания добавлен.");
                     break;
             }

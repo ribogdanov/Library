@@ -73,6 +73,13 @@ namespace Library.Windows.LibraryStorageWindows
                             }
                             //Обновление данных в окне-родителе:
                             DataChanged?.Invoke(this, new EventArgs());
+
+                            //Очистка заполняемых полей:
+                            ISBNTextBox.Text = "";
+                            PublishDateDatePicker.SelectedDate = null;
+                            PublisherTextBox.Text = "";
+                            CommentTextBox.Text = "";
+
                             MessageBox.Show($"Добавлен экземпляр книги.\nID={DocumentItemID}");
                         }
                     }

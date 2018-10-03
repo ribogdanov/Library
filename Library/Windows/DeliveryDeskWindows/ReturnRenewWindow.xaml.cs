@@ -175,7 +175,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                         }
                     }
                     else
-                        MessageBox.Show("Выберите книгу.");
+                        MessageBox.Show("Выберите книгу для приёма.");
                     break;
                 case 2:
                     //Нажата кнопка "Продлить книгу"
@@ -206,7 +206,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                         }
                     }
                     else
-                        MessageBox.Show("Выберите книгу.");
+                        MessageBox.Show("Выберите книгу для продления.");
                     break;
                 case 3:
                     //Нажата кнопка "Принять периодическое издание"
@@ -234,7 +234,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                         }
                     }
                     else
-                        MessageBox.Show("Выберите периодическое издание.");
+                        MessageBox.Show("Выберите периодическое издание для приёма.");
                     break;
                 case 4:
                     //Нажата кнопка "Продлить периодическое издание"
@@ -265,7 +265,7 @@ where CustomerDocumentInteraction.CustomerID=@id
                         }
                     }
                     else
-                        MessageBox.Show("Выберите периодическое издание.");
+                        MessageBox.Show("Выберите периодическое издание для продления.");
                     break;
                 case 5:
                     //Нажата кнопка "Назад"

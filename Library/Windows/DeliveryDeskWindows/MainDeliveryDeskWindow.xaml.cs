@@ -39,27 +39,27 @@ namespace Library.Windows.DeliveryDeskWindows
                 case 0:
                     //Нажата кнопка "Выдать книгу"
                     checkOutBookWindow = new CheckOutBookWindow();
-                    checkOutBookWindow.Show();
+                    checkOutBookWindow.ShowDialog();
                     break;
                 case 1:
-                    //Нажата кнопка "Выдать еприодическое издание"
+                    //Нажата кнопка "Выдать периодическое издание"
                     checkOutPeriodicalWindow = new CheckOutPeriodicalWindow();
-                    checkOutPeriodicalWindow.Show();
+                    checkOutPeriodicalWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Принять/продлить документ"
                     returnRenewWindow = new ReturnRenewWindow();
-                    returnRenewWindow.Show();
+                    returnRenewWindow.ShowDialog();
                     break;
                 case 3:
                     //Нажата кнопка "Найти документ в базе данных"
                     mainSearchWindow = new SearchWindows.MainSearchWindow();
-                    mainSearchWindow.Show();
+                    mainSearchWindow.ShowDialog();
                     break;
                 case 4:
                     //Нажата кнопка "Зарегистрировать читателя"
                     customerRegistrationWindow = new CustomerRegistrationWindow();
-                    customerRegistrationWindow.Show();
+                    customerRegistrationWindow.ShowDialog();
                     break;
                 case 5:
                     //Нажата кнопка "Назад"

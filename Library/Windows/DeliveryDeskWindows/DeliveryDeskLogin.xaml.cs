@@ -38,8 +38,8 @@ namespace Library.Windows.DeliveryDeskWindows
                         if (PasswordTextBox.Text == "12345")
                         {
                             mainDeliveryDeskWindow = new MainDeliveryDeskWindow();
-                            mainDeliveryDeskWindow.Show();
                             Close();
+                            mainDeliveryDeskWindow.ShowDialog();
                         }
                         else
                             MessageBox.Show("Введенный пароль неверен.");

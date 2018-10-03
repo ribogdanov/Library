@@ -38,8 +38,8 @@ namespace Library.Windows.LibraryStorageWindows
                         if (PasswordTextBox.Text == "12345")
                         {
                             mainStorageWindow = new MainStorageWindow();
-                            mainStorageWindow.Show();
                             Close();
+                            mainStorageWindow.ShowDialog();
                         }
                         else
                             MessageBox.Show("Введенный пароль неверен.");

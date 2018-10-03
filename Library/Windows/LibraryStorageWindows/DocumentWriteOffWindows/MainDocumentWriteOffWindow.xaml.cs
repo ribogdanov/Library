@@ -37,12 +37,12 @@ namespace Library.Windows.LibraryStorageWindows.DocumentWriteOffWindows
                 case 0:
                     //Нажата кнопка "Списать книгу"
                     bookWriteOffWindow = new BookWriteOffWindow();
-                    bookWriteOffWindow.Show();
+                    bookWriteOffWindow.ShowDialog();
                     break;
                 case 1:
                     //Нажата кнопка "Списать периодическое издание"
                     periodicalWriteOffWindow = new PeriodicalWriteOffWindow();
-                    periodicalWriteOffWindow.Show();
+                    periodicalWriteOffWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Назад"

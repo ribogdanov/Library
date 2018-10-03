@@ -425,7 +425,10 @@ group by
                                     }
 
                                     if (flag == true)
+                                    {
                                         db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentBookItem.DocumentItemID));
+                                        MessageBox.Show("Экземпляр книги выдан читателю.");
+                                    }
 
                                     //Обновление данных в BookItemsDataGrid:
                                     BookItemsByBook();

@@ -39,7 +39,7 @@ namespace Library
                 var customerDocumentInteractions = db.CustomerDocumentInteractions.SqlQuery(GetCDIQuery).ToList();
                 foreach (var item in customerDocumentInteractions)
                 {
-                    if (item.DueDate < DateTime.Now)
+                    if (item.DueDate < DateTime.Now && item.Status=="Taken")
                         db.Database.ExecuteSqlCommand(SetStatusOverdueQuery, new SqlParameter("@id", item.CDInteractionID));
                 }
             }
@@ -55,17 +55,17 @@ namespace Library
                 case 0:
                     //Нажата кнопка "Войти в модуль "Читатель"
                     customerLoginWindow = new Windows.CustomerWindows.CustomerLogin();
-                    customerLoginWindow.Show();
+                    customerLoginWindow.ShowDialog();
                     break;
                 case 1:
                     //Нажата кнопка "Войти в модуль "Абонемент"
                     deliveryDeskLoginWindow = new Windows.DeliveryDeskWindows.DeliveryDeskLogin();
-                    deliveryDeskLoginWindow.Show();
+                    deliveryDeskLoginWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Войти в модуль "Хранилище"
                     storageLoginWindow = new Windows.LibraryStorageWindows.StorageLogin();
-                    storageLoginWindow.Show();
+                    storageLoginWindow.ShowDialog();
                     break;
                 case 3:
                     //Нажата кнопка "Выйти"

@@ -99,6 +99,13 @@ values (@periodicalID, @issueNumber, @issuePeriod, 0, @publisher, @comment)";
                                         new SqlParameter("@publisher", PublisherTextBox.Text),
                                         new SqlParameter("@comment", CommentTextBox.Text));
                                     DataChanged?.Invoke(this, new EventArgs());
+
+                                    //Очиска заполняемых полей:
+                                    IssueNumberTextBox.Text = "";
+                                    IssuePeriodTextBox.Text = "";
+                                    PublisherTextBox.Text = "";
+                                    CommentTextBox.Text = "";
+
                                     MessageBox.Show("Выпуск периодического издания добавлен.");
                                 }
                                 else

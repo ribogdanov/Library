@@ -39,27 +39,27 @@ namespace Library.Windows.LibraryStorageWindows
                 case 0:
                     //Нажата кнопка "Поступление книги"
                     addBookMainWindow = new AddBookMainWindow();
-                    addBookMainWindow.Show();
+                    addBookMainWindow.ShowDialog();
                     break;
                 case 1:
                     //Нажата кнопка "Поступление периодического издания"
                     addPeriodicalMainWindow = new AddPeriodicalMainWindow();
-                    addPeriodicalMainWindow.Show();
+                    addPeriodicalMainWindow.ShowDialog();
                     break;
                 case 2:
                     //Нажата кнопка "Списание документа"
                     documentWriteOffWindow = new DocumentWriteOffWindows.MainDocumentWriteOffWindow();
-                    documentWriteOffWindow.Show();
+                    documentWriteOffWindow.ShowDialog();
                     break;
                 case 3:
                     //Нажата кнопка "Невозвращенные документы"
                     overdueDocumentsOverviewWindow = new OverdueDocumentsOverviewWindow();
-                    overdueDocumentsOverviewWindow.Show();
+                    overdueDocumentsOverviewWindow.ShowDialog();
                     break;
                 case 4:
                     //Нажата кнопка "Поиск по базе данных документов"
                     mainSearchwindow = new SearchWindows.MainSearchWindow();
-                    mainSearchwindow.Show();
+                    mainSearchwindow.ShowDialog();
                     break;
                 case 5:
                     //Нажата кнопка "Назад"

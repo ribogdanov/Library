@@ -135,7 +135,10 @@ namespace Library.Windows.DeliveryDeskWindows
                                     }
 
                                     if (flag == true)
+                                    {
                                         db.Database.ExecuteSqlCommand(SetDocumentStatusUnavailableQuery, new SqlParameter("@documentItemID", currentPeriodicalItem.DocumentItemID));
+                                        MessageBox.Show("Экземпляр периодического издания выдан читателю.");
+                                    }
 
                                     //Обновление данных в PeriodicalItemsDataGrid:
                                     ItemsByIssue();

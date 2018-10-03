@@ -131,9 +131,15 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 BooksDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.CustomerOverviewWindow_BooksDataGrid>(BooksDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
                                 BooksDataGrid.ItemsSource = null;
                                 BooksDataGrid.ItemsSource = BooksDataGridQueryResult;
+
+                                MessageBox.Show("Книга продлена.");
                             }
                         }
+                        else
+                            MessageBox.Show("Выбранная книга уже возвращена в библиотеку.");
                     }
+                    else
+                        MessageBox.Show("Выберите книгу для продления.");
                     break;
                 case 1:
                     //Нажата кнопка "Продлить периодическое издание"
@@ -154,14 +160,22 @@ where CustomerDocumentInteraction.CustomerID=@id
                                 PeriodicalsDataGridQueryResult = db.Database.SqlQuery<QueryResultClasses.CustomerOverviewWindow_PeriodicalsDataGrid>(PeriodicalsDataGridSqlQuery, new SqlParameter("@id", UserID)).ToList();
                                 PeriodicalsDataGrid.ItemsSource = null;
                                 PeriodicalsDataGrid.ItemsSource = PeriodicalsDataGridQueryResult;
+
+                                MessageBox.Show("Периодическое издание продлено.");
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show("Выбранное издание уже возвращено в библиотеку.");
+                        }
                     }
+                    else
+                        MessageBox.Show("Выберите периодическое издание для продления.");
                     break;
                 case 2:
                     //Нажата кнопка "Искать документ в базе данных"
                     SearchWindow = new SearchWindows.MainSearchWindow();
-                    SearchWindow.Show();
+                    SearchWindow.ShowDialog();
                     break;
                 case 3:
                     //Нажата кнопка "Назад"
